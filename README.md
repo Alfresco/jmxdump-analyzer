@@ -1,7 +1,7 @@
 # jmxdump-analyzer
 The JMXDump Analyser Utility is a small, internal-only, self-contained JavaFX application which allows you to open a JMX dump file that a customer has sent through which will split the contents in manageable tabs. Highlighting the important stuff first and then breaking down the settings into the relevant topics, the utility makes JMX dumps easier to read
 
-author @astrachan
+author @github/astrachan
 
 Please logon to our [Nexus](https://nexus.alfresco.com) before clicking on any of these links:
 * Full documentation is [here](https://nexus.alfresco.com/nexus/content/repositories/alfresco-internal-docs/jmxdump-analyzer-fx/latest/index.html)
