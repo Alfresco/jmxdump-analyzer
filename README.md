@@ -15,14 +15,14 @@ Please logon to our [Nexus](https://nexus.alfresco.com) before clicking on any o
 * Displays at-a-glance important information (Basic tab)
 * Breaks down the settings into relevant sections (tabs) in fixed-width font for easier reading and copying/pasting
 * Separates Global Properties from JMX-persisted settings (Global Properties are prepended with ** in the tabs)
-* Analyses memory usage and availability
+* Analyses memory management/GC and availability
 * Makes recommendations based on the data within the JMX Dump
 * Gives a break-down of contentstore information (mount points and space)
 * Gives a break-down of transactional cache statistics breakdown
-* Shows SOLR/SOLR4 cache information if applicable
+* Shows Lucene/SOLR/SOLR4/SOLR6 cache information if applicable
 * Shows the upgrade path
 * Search through both the original jmxdump text as well as through the displayed tab information
-* Ability to change font in the UI
+* Ability to change font size in the UI
 
 ## Downloading, building and running the application
 The name of the application is **jmxdump-analyzer-fx** and can be run on any platform (Windows, MacOS or Linux).
