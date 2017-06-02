@@ -1,0 +1,102 @@
+Description
+
+  The JMXDump Analyser Utility is a small, internal-only, self-contained JavaFX application which allows you to open a JMX dump file that a customer has sent through which will split the contents in manageable tabs. Highlighting the important stuff first and then breaking down the settings into the relevant topics, the utility makes JMX dumps easier to read. 
+  This utility has been completely re-written from scratch with JavaFX making it better in the following ways:
+  
+  	* Faster
+  	
+  	* Now re-sizable and scales correctly
+  	
+  	* Easier to scale and add more functionality (as new things get exposed in the JMX dump)
+  	
+  	* Cross platform (the older (read: monstrous) utility had to drag in SWT dependancies for each platform)
+  	
+  	* Smaller and more portable
+  	
+  	
+  
+[images/1.png]
+
+	<Figure 1 - The JMXDump Analyser FX main screen>
+
+
+Features
+
+	* Allows you to load in a JMXDump file from any version of Alfresco (including version 5.1 +)
+	
+	* NEW Allows you to drag and drop a JMXDump text file directly into the application
+	
+	* NEW Allows you to load in an Alfresco-generated JMXDump zip file
+	
+	* Displays at-a-glance important information (Basic tab)
+
+	* Breaks down the settings into relevant sections (tabs) in fixed-width font for easier reading and copying/pasting
+	
+	* Separates Global Properties from JMX-persisted settings (Global Properties are prepended with ** in the tabs)
+	
+	* Analyses memory usage and availability
+	
+	* Makes recommendations based on the data within the JMX Dump
+	
+	* Gives a break-down of contentstore information (mount points and space)
+	
+	* Gives a break-down of transactional cache statistics breakdown
+	
+	* Shows SOLR/SOLR4 cache information if applicable
+	
+	* Shows the upgrade path
+	
+	* Search through both the original jmxdump text as well as through the displayed tab information
+	
+	* Ability to change font in the UI
+
+
+Version Info
+
+	<<Latest version is 2.1.0>> -- changes {{{https://artifacts.alfresco.com/nexus/content/repositories/alfresco-internal-docs/jmxdump-analyzer-fx/latest/changes-report.html}here}}
+	
+	<<2.1.0>>
+		
+		* General cleaning up of the UI
+		
+		* Tidied amps, populated cron properly
+		
+		* Added serverInfo and readonly? to basic information
+		
+		* Added new 'Java' tab for java-specific system info
+		
+		* Separated AMP information in the AMP tab - much easier on the eyes
+		
+		* Made the index information specific to the current index.subsystem, instead of listing EVERYTHING that pattern matches.
+	
+	<<2.0.4>>
+	
+		* Implemented font increase and decrease buttons (max 17.0ps, min 8px)
+	
+		* Implemented non-modal window operation (experimental)
+
+		* Tidied and corrected a few things
+	
+	<<2.0.3>>
+	
+		* Added additional displayed input to the UI (specifically the Repo Management stuff)
+	
+		* Add other little bits n pieces
+	
+	<<2.0.2>>
+	
+		* Implemented ability to just press ENTER int he search box to search for text
+	
+		* Taking the appliedToServer information from the JMXDump we can now see a list of versions (i.e. an upgrade path) - Tools -> Version Info
+	 
+	 
+	
+	Began the groundwork for XP-30; here we are making the JXMDump Analyser a little more helpful in terms of producing analysis information based on what is available in the JMX dump file.\
+	This has been implemented in a couple of ways, there is a Memory Analyser menu item which will break down system and JVM memory-related information into an understandable format\
+	There is also a Recommendations menu item which will check certain areas of the information we have and advise accordinglyas well as a Contentstore button which will show you contentstore information and a Cache Statistics menu item\
+	which in turn will show you the transactional cache statistics (for Alfresco 5.x and upwards).
+
+
+Author (who to contact)
+
+	email me: {{{mailto://alex.strachan@alfresco.com}Alex Strachan}}

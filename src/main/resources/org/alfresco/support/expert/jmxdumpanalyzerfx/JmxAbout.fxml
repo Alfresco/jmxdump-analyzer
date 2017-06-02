@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="284.0" maxWidth="390.0" minHeight="284.0" minWidth="390.0" prefHeight="284.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.alfresco.support.expert.jmxdumpanalyzerfx.JmxAboutController">
+   <children>
+      <Label layoutX="111.0" layoutY="14.0" prefHeight="35.0" prefWidth="154.0" text="JMXDump-Analyzer-FX" AnchorPane.topAnchor="14.0" />
+      <Label layoutX="111.0" layoutY="75.0" text="Author:  Alex Strachan" AnchorPane.topAnchor="75.0" />
+      <Label layoutX="111.0" layoutY="49.0" text="Version:" AnchorPane.topAnchor="49.0" />
+      <Label fx:id="lblVersion" layoutX="169.0" layoutY="49.0" prefHeight="17.0" prefWidth="102.0" AnchorPane.topAnchor="49.0" />
+      <ImageView fitHeight="73.0" fitWidth="200.0" layoutX="78.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="103.0">
+         <image>
+            <Image url="@alf_support.png" />
+         </image>
+      </ImageView>
+      <TextArea fx:id="txtAbout" editable="false" layoutX="8.0" layoutY="151.0" prefHeight="119.0" prefWidth="378.0" text="This is the JMXDump Analyzer which has been completely re-written in JavaFX. This utilility is for internal Alfresco use only. If you have any problems please let me know (alex.strachan@alfresco.com). Check out the documentation located here: https://artifacts.alfresco.com/nexus/content/repositories/alfresco-internal-docs/jmxdump-analyzer-fx/latest/index.html " wrapText="true" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" />
+   </children>
+</AnchorPane>

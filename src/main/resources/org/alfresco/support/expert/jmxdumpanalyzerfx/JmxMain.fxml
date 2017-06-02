@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.net.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="mainAnchorPane" minHeight="400.0" minWidth="600.0" onDragDropped="#handleDragFile" onDragOver="#handleDragOver" prefHeight="517.0" prefWidth="1230.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.alfresco.support.expert.jmxdumpanalyzerfx.JmxMainController">
+    <children>
+      <MenuBar layoutX="1.0" layoutY="2.0" maxHeight="25.0" minHeight="25.0" prefHeight="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="menuOpenFile" mnemonicParsing="false" onAction="#handleFileOpenAction" text="Open JMXDump" />
+                  <MenuItem fx:id="menuOpenZip" mnemonicParsing="false" onAction="#handleFileOpenZipAction" text="Open ZIP file" />
+                  <MenuItem fx:id="menuReset" mnemonicParsing="false" onAction="#handleReset" text="Reset" />
+              <MenuItem mnemonicParsing="false" onAction="#handleClose" text="Close" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Tools">
+              <items>
+                  <MenuItem fx:id="menuEditor" mnemonicParsing="false" onAction="#handleFileEditor" text="Open file in text editor" />
+                  <Menu mnemonicParsing="false" text="Analysis">
+                    <items>
+                      <MenuItem fx:id="menuRec" mnemonicParsing="false" onAction="#handleRecAction" text="Recommendations" />
+                        <MenuItem fx:id="menuVersion" mnemonicParsing="false" onAction="#handleAppliedToServerStatisticsAction" text="Version info" />
+                        <MenuItem fx:id="menuCon" mnemonicParsing="false" onAction="#handleCSAction" text="ContentStore Info" />
+                        <MenuItem fx:id="menuMem" mnemonicParsing="false" onAction="#handleMemoryAnalysisAction" text="Memory Analysis" />
+                        <MenuItem fx:id="menuCacheStats" mnemonicParsing="false" onAction="#handleCacheStatisticsAction" text="Cache Statistics (5.0+)" />
+                        <MenuItem fx:id="menuSOLR" mnemonicParsing="false" onAction="#handleSOLRAction" text="SOLR/SOLR4 Caches" />
+                    </items>
+                  </Menu>
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleAboutAction" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TabPane fx:id="myTabPane" layoutX="20.0" layoutY="102.0" onDragDropped="#handleDragFile" onDragOver="#handleDragOver" prefHeight="342.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="102.0">
+        <tabs>
+          <Tab closable="false" text="Basic">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtBasic" editable="false" prefHeight="223.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+            </content>
+               <tooltip>
+                  <Tooltip text="Basic (at-a-glance) information" />
+               </tooltip>
+          </Tab>
+            <Tab closable="false" text="JVM">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtJVM" editable="false" layoutX="48.0" layoutY="14.0" prefHeight="315.0" prefWidth="1022.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="JVM options" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="OS">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtOS" editable="false" prefHeight="223.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="OS and architecture information" />
+               </tooltip>
+            </Tab>
+          <Tab closable="false" text="Dirs">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtDirs" editable="false" prefHeight="299.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children></AnchorPane>
+            </content>
+               <tooltip>
+                  <Tooltip text="Directory settings" />
+               </tooltip>
+          </Tab>
+            <Tab closable="false" text="Lic">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtLic" editable="false" layoutX="65.0" layoutY="24.0" prefHeight="299.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="Licence information" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="Cluster">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtCluster" editable="false" prefHeight="299.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="Cluster/HZ information" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="DB">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtDB" editable="false" prefHeight="299.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="Database settings and information" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="Auth">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtAuth" editable="false" prefHeight="299.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="Authentication settings" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="FS">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtFS" editable="false" prefHeight="299.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="Filesystem settings" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="Index">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtIndex" editable="false" prefHeight="299.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="Indexing information and settings" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="Audit">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtAudit" editable="false" prefHeight="299.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="Auditing settings" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="Mail">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtMail" editable="false" prefHeight="299.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="Mail/IMAP settings" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="AMP">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtModule" editable="false" prefHeight="299.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="Installed modules/AMP information" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="3rd Party">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txt3rdParty" editable="false" prefHeight="299.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="3rd Party utility information (transformers)" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="BPM">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtBPM" editable="false" prefHeight="299.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="Workflow-related settings" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="Xform">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtTransform" editable="false" prefHeight="299.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="Transformer information and settings" />
+               </tooltip>
+            </Tab>
+            <Tab text="JMS">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtJMS" editable="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="JMS/Messaging settings" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="CMIS">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtCMIS" editable="false" prefHeight="299.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="CMIS/OpenCMIS settings" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="Activities">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtAct" editable="false" prefHeight="299.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="Activities settings" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="Cron">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtCron" editable="false" prefHeight="299.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="Cron job settings" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="Cache">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtCache" editable="false" prefHeight="299.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="Cache settings" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="SF">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtVF" editable="false" prefHeight="299.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font></TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="Smart folder settings" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="Sys">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtSys" editable="false" prefHeight="299.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="System settings" />
+               </tooltip>
+            </Tab>
+            <Tab text="Java">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtJava" prefHeight="315.0" prefWidth="1230.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="Java settings" />
+               </tooltip>
+            </Tab>
+            <Tab closable="false" text="Other">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtOther" editable="false" prefHeight="299.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="Other un-categorised settings" />
+               </tooltip>
+            </Tab>
+            <Tab fx:id="myTab" closable="false" text="Search Results">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="txtSearchResults" editable="false" prefHeight="299.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="Monospaced Regular" size="11.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <tooltip>
+                  <Tooltip text="Search results" />
+               </tooltip>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <HBox layoutX="14.0" layoutY="44.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="35.0">
+         <children>
+            <Label fx:id="lblFileName" layoutX="14.0" layoutY="44.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="14.0" layoutY="52.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="56.0">
+         <children>
+            <Label fx:id="lblFileSize" layoutX="14.0" layoutY="52.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="14.0" layoutY="74.0" prefHeight="17.0" prefWidth="411.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="184.0" AnchorPane.topAnchor="76.0">
+         <children>
+            <Label fx:id="lblCapture" layoutX="14.0" layoutY="74.0" prefWidth="400.0" />
+         </children>
+      </HBox>
+      <Label layoutX="783.0" layoutY="446.0" text="Global properties are prepended with **" AnchorPane.bottomAnchor="52.0" AnchorPane.rightAnchor="5.0" />
+      <HBox layoutX="14.0" layoutY="442.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
+         <children>
+            <TextField fx:id="txtSearch" layoutX="14.0" layoutY="442.0" onKeyPressed="#searchEnterPressed" prefHeight="25.0" prefWidth="371.0">
+               <tooltip>
+                  <Tooltip text="Enter the text you're searching for here (press ENTER or click Search)" />
+               </tooltip>
+            </TextField>
+         </children>
+      </HBox>
+      <Button fx:id="btnSearch" layoutX="398.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleSearch" text="Search" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="398.0">
+         <tooltip>
+            <Tooltip text="Click to search" />
+         </tooltip>
+      </Button>
+      <CheckBox fx:id="chkBox" layoutX="464.0" layoutY="446.0" mnemonicParsing="false" text="Search source JMXDump?" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="485.0">
+         <tooltip>
+            <Tooltip text="Select to search through the source JMXDump file" />
+         </tooltip></CheckBox>
+      <Label fx:id="lblCustomer" layoutX="10.0" layoutY="457.0" prefHeight="17.0" prefWidth="749.0" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="10.0" />
+      <Button fx:id="btnIncreaseFont" layoutX="1182.0" layoutY="473.0" mnemonicParsing="false" onAction="#handleIncreaseFont" prefHeight="34.0" prefWidth="34.0" text="+" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="14.0">
+         <tooltip>
+            <Tooltip text="Click to increase the font of all content in all tabs" />
+         </tooltip>
+      </Button>
+      <Button fx:id="btnDecreaseFont" layoutX="1078.0" layoutY="478.0" mnemonicParsing="false" onAction="#handleDecreaseFont" prefHeight="34.0" prefWidth="34.0" text="-" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="118.0">
+         <tooltip>
+            <Tooltip text="Click to decrease the font of all content in all tabs" />
+         </tooltip>
+      </Button>
+      <Label layoutX="1125.0" layoutY="474.0" text="Font size" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="58.0" />
+      <Label fx:id="lblFontSize" layoutX="1139.0" layoutY="490.0" prefHeight="17.0" prefWidth="34.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="57.0" />
+      <CheckBox fx:id="chkModal" layoutX="750.0" layoutY="490.0" mnemonicParsing="false" text="Non-modal? (experimental)" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="750.0">
+         <tooltip>
+            <Tooltip text="Use non-modal windows (this is experimental and could cause confusion with multiple open windows). This checkbox will ALWAYS reset itself to unselected when a new dump is loaded" />
+         </tooltip>
+      </CheckBox>
+    </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</AnchorPane>

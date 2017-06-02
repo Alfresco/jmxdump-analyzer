@@ -1,0 +1,23 @@
+How to install
+
+	You will of course need to login to the Nexus maven repository in order to access these builds. Simply download the jar-with-dependencies .jar file
+
+	<<<jmxdump-analyzer-fx-<x.x.x>-jar-with-dependencies.jar>>>
+	
+
+
+How to run
+
+	Navigate to the folder where the distribution bundle was downloaded to and run:
+
+	<<On Windows, Linux & Mac:>>
+
+-----------------------------------------------------------------------
+	java -jar jmxdump-analyzer-fx-2.x.x-jar-with-dependencies.jar
+-----------------------------------------------------------------------
+
+	Obviously you will have to make sure that the java binary to be on the path for these direct commands to work.
+	
+Requirements
+
+	This must be run using Java 8 - preferably the latest update (as many of the included functionality is JavaFX 8 only)

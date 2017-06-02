@@ -1,0 +1,44 @@
+<document>
+  <properties>
+    <title>JMXDump Analyser Utility</title>
+    <author email="alex.strachan@alfresco.com">Alex Strachan</author>
+  </properties>
+  <body>
+  <release version="2.1.0" date="2017-02-17" description="Updated for 5.2, plenty of additions and cleaning up UI">
+    <action dev="astrachan" type="update">Tidied amps, populated cron properly | Added serverInfo and readonly? to basic information | Added new 'Java' tab for java-specific system info | Separated AMP information in the AMP tab - much easier on the eyes | Made the index information specific to the current index.subsystem, instead of listing EVERYTHING that pattern matches.</action>
+    </release>
+   <release version="2.0.4" date="2016-03-23" description="Implemented font increase and decrease, non-modal windows as well as corrected a few things">
+    <action dev="astrachan" type="update">Implemented font increase and decrease via buttons (rather than context), implemented non-modal operation for multipe, windows as well as corrected a few things</action>
+    </release>
+  <release version="2.0.3" date="2016-03-11" description="Implemented additional settings into the tables, added customer label grepped from license info">
+    <action dev="astrachan" type="update">Implemented additional settings into the tables, added customer label grepped from license info</action>
+    </release>
+      <release version="2.0.2" date="2016-02-05" description="Implemented version information (Tools -> Version info)">
+    <action dev="astrachan" type="update">Taking the appliedToServer information from the JMXDump we can now see a list of versions (i.e. an upgrade path)</action>
+    </release>
+    <release version="2.0.1" date="2016-02-02" description="Implemented feature for pressing ENTER for searching">
+    <action dev="astrachan" type="update">Previously you had to click the search buttin to search, now you can just press ENTER in the search textfield</action>
+    </release>
+    <release version="2.0.0" date="2016-01-28" description="Updated for 5.1, introduced DnD for dump files and opening ZIP files">
+    <action dev="astrachan" type="update">Updated application for imminent 5.1 release, introduced drag and drop functionality for JMXDump text files as well as adedd option to load Alfresco-generated zip files</action>
+    </release>
+    <release version="1.1.0" date="2015-03-04" description="Corrected font">
+    <action dev="astrachan" type="update">Made sure the fixed-width tab font works on all platforms (now using monospaces-regular)</action>
+    </release>
+    <release version="1.0.9" date="2015-03-04" description="Added Transformation Server license info">
+    <action dev="astrachan" type="update">Added Transformation Server license info (if present)</action>
+    </release>
+    <release version="1.0.8" date="2015-03-03" description="Added SOLR cache analysis menuItem">
+    <action dev="astrachan" type="update">Added additional modal page, a SOLR cache breakdown (if present)</action>
+    </release>
+    <release version="1.0.7" date="2015-02-27" description="Fixed bug in searching JVM tab information">
+    <action dev="astrachan" type="fix">Fixed bug in searching JVM tab information, thanks to Ms Soria for spotting that one</action>
+    </release>
+    <release version="1.0.6" date="2015-02-25" description="Tidied up UI slightly">
+    <action dev="astrachan" type="fix">No functional changes, just tidied up UI</action>
+    </release>
+    <release version="1.0.5" date="2015-02-25" description="jmxdump-analyzer-fx Initial Mavenization and deployment">
+    <action dev="astrachan" type="update">Mavenized new project and deployed snapshot</action>
+    </release>
+  </body>
+</document>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="534.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.alfresco.support.expert.jmxdumpanalyzerfx.JmxCacheStatsController">
+   <children>
+      <TextArea fx:id="txtCacheStats" editable="false" layoutX="121.0" layoutY="116.0" prefHeight="534.0" prefWidth="670.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="Monospaced Regular" size="11.0" />
+         </font>
+      </TextArea>
+   </children>
+</AnchorPane>

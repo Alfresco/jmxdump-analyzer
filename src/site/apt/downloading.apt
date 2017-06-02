@@ -1,0 +1,18 @@
+Downloading
+
+	Source is {{{https://svn.alfresco.com/repos/support/jmxdump-analyzer-fx-mvn/}here}}
+	
+	Current <<2.1.0 release>> jar file is {{{https://artifacts.alfresco.com/nexus/content/repositories/alfresco-support-releases/org/alfresco/support/jmxdump-analyzer-fx/}here}}
+	
+	Current <<snapshot>> jar file is {{{https://artifacts.alfresco.com/nexus/content/repositories/alfresco-support-snapshots/org/alfresco/support/jmxdump-analyzer-fx/}here}}
+
+
+Pre-requisites
+	
+	This JAR file will run on any platform however make sure you are running it with Java 8 JRE (preferably the latest update), you can download it from {{{http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html}here}}
+	
+	
+	
+	
+	
+	
