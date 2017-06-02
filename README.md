@@ -3,6 +3,10 @@ The JMXDump Analyser Utility is a small, internal-only, self-contained JavaFX ap
 
 author @astrachan
 
+* Full documentation is [here](https://nexus.alfresco.com/nexus/content/repositories/alfresco-internal-docs/jmxdump-analyzer-fx/latest/index.html)
+* Full change log report is [here](https://nexus.alfresco.com/nexus/content/repositories/alfresco-internal-docs/jmxdump-analyzer-fx/latest/changes-report.html)
+* Latest SNAPSHOT versions are [here](https://artifacts.alfresco.com/nexus/content/repositories/alfresco-support-snapshots/org/alfresco/support/jmxdump-analyzer-fx/)
+
 ## Features
 * Allows you to load in a JMXDump file from any version of Alfresco (including version 5.2 +)
 * NEW Allows you to drag and drop a JMXDump text file directly into the application
@@ -19,5 +23,18 @@ author @astrachan
 * Search through both the original jmxdump text as well as through the displayed tab information
 * Ability to change font in the UI
 
+## Downloading, building and running the application
+The name of the application is **jmxdump-analyzer-fx** and can be run on any platform (Windows, MacOS or Linux).
+First you can clone this repository.
+
+**Pre-requisites**
+* Maven 3.3.9 or above
+* Java 8
+
+**Building**
+`mvn clean install`
+
+**Running the application**
+`java -jar target\jmxdump-analyzer-fx-x.x.x-jar-with-dependencies`
 
 
