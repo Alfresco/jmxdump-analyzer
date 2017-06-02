@@ -36,6 +36,6 @@ First you can clone this repository.
 `mvn clean install`
 
 **Running the application**
-`java -jar target\jmxdump-analyzer-fx-x.x.x-jar-with-dependencies`
+`java -jar target\jmxdump-analyzer-fx-x.x.x-jar-with-dependencies.jar`
 
 
