@@ -2,7 +2,7 @@ Downloading
 
 	Source is {{{https://svn.alfresco.com/repos/support/jmxdump-analyzer-fx-mvn/}here}}
 	
-	Current <<2.1.0 release>> jar file is {{{https://artifacts.alfresco.com/nexus/content/repositories/alfresco-support-releases/org/alfresco/support/jmxdump-analyzer-fx/}here}}
+	Current <<2.1.3 release>> jar file is {{{https://artifacts.alfresco.com/nexus/content/repositories/alfresco-support-releases/org/alfresco/support/jmxdump-analyzer-fx/}here}}
 	
 	Current <<snapshot>> jar file is {{{https://artifacts.alfresco.com/nexus/content/repositories/alfresco-support-snapshots/org/alfresco/support/jmxdump-analyzer-fx/}here}}
 

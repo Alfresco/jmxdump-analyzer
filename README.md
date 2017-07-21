@@ -19,7 +19,7 @@ Please logon to our [Nexus](https://nexus.alfresco.com) before clicking on any o
 * Makes recommendations based on the data within the JMX Dump
 * Gives a break-down of contentstore information (mount points and space)
 * Gives a break-down of transactional cache statistics breakdown
-* Shows Lucene/SOLR/SOLR4/SOLR6 cache information if applicable
+* Shows Lucene/SOLR/SOLR4/SOLR6 cache information if applicable (plus approximate number of docs in the index)
 * Shows the upgrade path
 * Search through both the original jmxdump text as well as through the displayed tab information
 * Ability to change font size in the UI

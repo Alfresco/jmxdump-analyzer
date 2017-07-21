@@ -100,13 +100,16 @@ import javafx.scene.text.Font;
  *          Extract start-time and up-time from JVM runtime variables, then calculate them into human readable form (Basics tab)
  *          
  *          2.1.2 -- astrachan
+ *          Cleaned up UI
+ *          
+ *          2.1.3 -- astrachan, XP-66 | fixed rubbish number of document in index. This time we isolate the indexing subsystem and count accordingly. Before we were also adding the total of docs in the SOLR searcher objects...
  *          
  * 
  */
 
 public class JmxMainController implements Initializable {
 
-	public static String version = "2.1.2";
+	public static String version = "2.1.3";
 	public static String filePath = null;
 	public static File file;
 	public static File openedZipfile;
@@ -1277,31 +1280,23 @@ public class JmxMainController implements Initializable {
 				if (line3.startsWith("TotalMemory ") || line3.startsWith("FreeMemory")) {
 					basicMem.add(line3);
 				}
-
+				
 				try {
-					// solr1 documents
-					if (line3.startsWith("NumDocuments")) {
-						docCount = docCount + Long.parseLong(line3.substring(line3.lastIndexOf(" ") + 1));
-					}
-
-					// lucene documents
-					if (line3.startsWith("NumberOfDocuments")) {
-						docCount = docCount + Long.parseLong(line3.substring(line3.lastIndexOf(" ") + 1));
-					}
-
-					// solr4 documents
-					while ((line6 = br6.readLine()) != null) {
-						if (line6.contains("type=searcher,id=org.apache.solr.search.SolrIndexSearcher")) {
-							while (!line6.contains("]") && !line6.isEmpty()) {
-								if (line6.startsWith("numDocs")) {
-									docCount = docCount + Long.parseLong(line6.substring(line6.lastIndexOf(" ") + 1));
-								}
-								line6 = br6.readLine();
-							}
+					// LUCENE
+					if (indexing.equals("lucene") || indexing.isEmpty()) {
+						if (line3.startsWith("NumberOfDocuments")) {
+							docCount = docCount + Long.parseLong(line3.substring(line3.lastIndexOf(" ") + 1));
 						}
 					}
-
-				} catch (java.lang.NumberFormatException name) {
+					
+					// SOLR1, SOLR4, SOLR6
+					else 
+						{
+							if (line3.startsWith("NumDocuments")) {
+								docCount = docCount + Long.parseLong(line3.substring(line3.lastIndexOf(" ") + 1));
+							}
+						}
+					} catch (java.lang.NumberFormatException name) {
 				}
 
 				// -------------------------------------------------------------------------------------------------------
@@ -1497,7 +1492,9 @@ public class JmxMainController implements Initializable {
 								|| line3.startsWith("lucene.")
 								|| line3.startsWith("index.")
 								|| line3.startsWith("solr_facets")
-								|| line3.startsWith("people.search")) {
+								|| line3.startsWith("people.search")
+								|| line3.startsWith("solr4.")) {
+										
 							txtIndex.appendText(line3 + "\r\n");
 						}
 						line3 = br3.readLine();
@@ -1920,6 +1917,10 @@ public class JmxMainController implements Initializable {
 			{
 				txtOther.appendText("** " + prop + "\r\n");
 			}
+		}
+		
+		if (indexing.equals("")) {
+			txtBasic.appendText("Unknown indexing subsystem, assuming Lucene \r\n");
 		}
 	}
 

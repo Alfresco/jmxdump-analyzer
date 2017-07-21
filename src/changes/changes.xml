@@ -4,6 +4,16 @@
     <author email="alex.strachan@alfresco.com">Alex Strachan</author>
   </properties>
   <body>
+  
+  <release version="2.1.3" date="2017-07-21" description="XP-66">
+    <action dev="astrachan" type="update">Fix rubbish calculation of approximate docs in the index. Now using the isolation of the index subsystem to determine what to look for...</action>
+    </release>
+  <release version="2.1.2" date="2017-03-15" description="Cleaned up UI">
+    <action dev="astrachan" type="update">Nothing special, doesn't really deserve a version increment. But I'm nice you see :)</action>
+    </release>
+  <release version="2.1.1" date="2017-02-20" description="Extract start-time and up-time from JVM runtime variables, then calculate them into human readable form (Basics tab)">
+    <action dev="astrachan" type="update">Extract start-time and up-time from JVM runtime variables, then calculate them into human readable form (Basics tab)</action>
+    </release>
   <release version="2.1.0" date="2017-02-17" description="Updated for 5.2, plenty of additions and cleaning up UI">
     <action dev="astrachan" type="update">Tidied amps, populated cron properly | Added serverInfo and readonly? to basic information | Added new 'Java' tab for java-specific system info | Separated AMP information in the AMP tab - much easier on the eyes | Made the index information specific to the current index.subsystem, instead of listing EVERYTHING that pattern matches.</action>
     </release>
