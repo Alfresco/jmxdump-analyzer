@@ -1,6 +1,6 @@
 Downloading
 
-	Source is {{{https://svn.alfresco.com/repos/support/jmxdump-analyzer-fx-mvn/}here}}
+	Source is {{{https://github.com/Alfresco/jmxdump-analyzer}here}}, as you can see it has recently been moved over to Github as a public project
 	
 	Current <<2.1.3 release>> jar file is {{{https://artifacts.alfresco.com/nexus/content/repositories/alfresco-support-releases/org/alfresco/support/jmxdump-analyzer-fx/}here}}
 	
