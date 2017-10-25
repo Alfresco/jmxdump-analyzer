@@ -331,7 +331,21 @@ public class JmxMainController implements Initializable {
 	}
 
 	@FXML
-	private void handleSearch(ActionEvent event) throws IOException {
+	private void handleSearch(ActionEvent event) throws IOException 
+	{
+		doSearch();
+	}
+	
+	// Implemented pressing ENTER on search box as feature request - astrachan
+	@FXML
+	public void searchEnterPressed(KeyEvent ke) throws IOException {
+		if (ke.getCode().equals(KeyCode.ENTER)) 
+		{
+			doSearch();
+		}
+	}
+	
+	private void doSearch() throws IOException {
 
 		txtSearchResults.setText("");
 
@@ -560,243 +574,6 @@ public class JmxMainController implements Initializable {
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			}
-		}
-	}
-
-	// Implemented pressing ENTER on search box as feature request - astrachan
-	
-	@FXML
-	public void searchEnterPressed(KeyEvent ke) throws FileNotFoundException {
-		if (ke.getCode().equals(KeyCode.ENTER)) {
-			txtSearchResults.setText("");
-
-			if ((txtSearch.getText().length() > 1) && !chkBox.isSelected()) {
-				txtSearchResults.appendText("### Searched tabs ###\r\n" + "\r\n");
-
-				scanner = new Scanner(txtBasic.getText());
-				scanner.useDelimiter("\\n");
-
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in Basic Tab)\r\n");
-					}
-				}
-
-				scanner.close();
-				scanner = new Scanner(txtJVM.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in JVM Tab)\r\n");
-					}
-				}
-
-				scanner.close();
-				scanner = new Scanner(txtOS.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in OS Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtDirs.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in Directories Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtLic.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in Licenses Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtCluster.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in Cluster Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtDB.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in RDBMS Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtAuth.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in Authentication (Auth) Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtFS.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in File-systems (FS) Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtIndex.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in Indexing Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtAudit.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in Auditing Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtMail.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in Mail/IMAP Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtModule.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in Modules (AMP) Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txt3rdParty.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in 3rd Party Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtBPM.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in Workflow (BPM) Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtTransform.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in Transformers Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtJMS.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in JMS/Messaging Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtCMIS.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in CMIS Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtAct.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in Activities Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtCron.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in Cron Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtCache.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in Cache Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtVF.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in Virtual/Smart folders Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtSys.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in System Tab)\r\n");
-					}
-				}
-				scanner = new Scanner(txtJava.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in Java Tab)\r\n");
-					}
-				}
-				scanner.close();
-				scanner = new Scanner(txtOther.getText());
-				while (scanner.hasNextLine()) {
-					String next = scanner.nextLine();
-					if (next.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-						txtSearchResults.appendText(next + "   (in Other (un-categorised) Tab)\r\n");
-					}
-				}
-				myTabPane.getSelectionModel().select(myTab);
-			} else {
-				// do nothing
-			}
-			if ((txtSearch.getText().length() > 1) && chkBox.isSelected()) {
-				txtSearchResults.appendText("### Searched source JMXDump file ###\r\n" + "\r\n");
-				String line5;
-				BufferedReader br5 = new BufferedReader(new FileReader(filePath));
-
-				try {
-					while ((line5 = br5.readLine()) != null) {
-						if (line5.toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-							txtSearchResults.appendText(line5.trim() + "\r\n");
-						}
-					}
-					myTabPane.getSelectionModel().select(myTab);
-
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
 			}
 		}
 	}
