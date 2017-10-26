@@ -59,9 +59,12 @@
 	</contributors>
 
 	<scm>
+		<connection>
+			
+		</connection>
 		<developerConnection>
-		scm:svn:https://svn.alfresco.com/repos/support/jmxdump-analyzer-fx-mvn/trunk
-	</developerConnection>
+			scm:git:[fetch=]https://github.com/Alfresco/jmxdump-analyzer.git[push=]ssh://git@github.com:Alfresco/jmxdump-analyzer.git
+		</developerConnection>
 	</scm>
 
 	<dependencies>
@@ -75,20 +78,20 @@
 		<repository>
 			<id>alfresco-support-releases</id>
 			<url>
-		https://artifacts.alfresco.com/nexus/content/repositories/alfresco-support-releases
-		</url>
+				https://artifacts.alfresco.com/nexus/content/repositories/alfresco-support-releases
+			</url>
 		</repository>
 		<snapshotRepository>
 			<id>alfresco-support-snapshots</id>
 			<url>
-		https://artifacts.alfresco.com/nexus/content/repositories/alfresco-support-snapshots
-		</url>
+				https://artifacts.alfresco.com/nexus/content/repositories/alfresco-support-snapshots
+			</url>
 		</snapshotRepository>
 		<site>
 			<id>alfresco-internal-docs</id>
 			<url>
-		dav:https://artifacts.alfresco.com/nexus/content/repositories/alfresco-internal-docs/${project.artifactId}/latest
-		</url>
+				dav:https://artifacts.alfresco.com/nexus/content/repositories/alfresco-internal-docs/${project.artifactId}/latest
+			</url>
 		</site>
 	</distributionManagement>
 	<properties>
