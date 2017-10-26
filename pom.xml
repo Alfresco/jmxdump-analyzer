@@ -59,9 +59,6 @@
 	</contributors>
 
 	<scm>
-		<connection>
-			
-		</connection>
 		<developerConnection>
 			scm:git:[fetch=]https://github.com/Alfresco/jmxdump-analyzer.git[push=]ssh://git@github.com:Alfresco/jmxdump-analyzer.git
 		</developerConnection>
