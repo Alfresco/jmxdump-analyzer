@@ -7,12 +7,14 @@ author @github/astrachan
 2.1.3
 
 **Alfresco internal**
+
 Please logon to our [Nexus](https://nexus.alfresco.com) before clicking on any of these links:
 * Full documentation is [here](https://nexus.alfresco.com/nexus/content/repositories/alfresco-internal-docs/jmxdump-analyzer-fx/latest/index.html)
 * Full change log report is [here](https://nexus.alfresco.com/nexus/content/repositories/alfresco-internal-docs/jmxdump-analyzer-fx/latest/changes-report.html)
 * Latest SNAPSHOT versions are [here](https://artifacts.alfresco.com/nexus/content/repositories/alfresco-support-snapshots/org/alfresco/support/jmxdump-analyzer-fx/)
 
 **External**
+
 The docs above are built as part of the 'site' project, please follow the 'site' instructions below.
 
 ## Features
@@ -44,7 +46,9 @@ First you can clone this repository.
 
 **Building the site/docs**
 `mvn clean site:site`
+
 This will create the docs/change reports etc... 
+
 Browse to ~/target/site/index.html
 
 **Running the application**
