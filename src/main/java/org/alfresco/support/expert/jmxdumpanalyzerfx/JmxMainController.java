@@ -762,7 +762,15 @@ public class JmxMainController implements Initializable {
 						chkBox.setDisable(false);
 
 						try {
-							localParse(filePath);
+							if (file.getName().toLowerCase().endsWith(".zip")) {
+								File unzippedFile = new File("unzippedJMXDumpfile.txt");
+								if (extractZipFile(new ZipFile(file), unzippedFile)){
+									localParse(unzippedFile.getCanonicalPath());
+								}
+							} else {
+								localParse(filePath);
+							}
+
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -778,7 +786,8 @@ public class JmxMainController implements Initializable {
 	private void mouseDragOver(final DragEvent e) {
 		final Dragboard db = e.getDragboard();
 
-		final boolean isAccepted = db.getFiles().get(0).getName().toLowerCase().endsWith(".txt");
+		final boolean isAccepted = db.getFiles().get(0).getName().toLowerCase().endsWith(".txt") ||
+									db.getFiles().get(0).getName().toLowerCase().endsWith(".zip");
 
 		if (db.hasFiles()) {
 			if (isAccepted) {
