@@ -632,6 +632,7 @@ public class JmxMainController implements Initializable {
 		try {
 			if (openedZipfile != null) {
 				zipfile = new ZipFile(openedZipfile);
+				fileGood = extractZipFile(zipfile, targetFile);
 			}
 		} catch (ZipException e) {
 			// TODO Auto-generated catch block
@@ -640,34 +641,8 @@ public class JmxMainController implements Initializable {
 		} catch (NullPointerException e) {
 			// swallow this one
 		}
-		try {
-		ZipEntry zipentry;
-		int fileNumber = 0;
-		for (Enumeration<? extends ZipEntry> e = zipfile.entries(); e.hasMoreElements(); fileNumber++) {
-			zipentry = e.nextElement();
 
-			if (!zipentry.isDirectory()) {
-				InputStream inputStream = zipfile.getInputStream(zipentry);
 
-				// if there is a file already on the FS, delete it.
-				if (targetFile.exists()) {
-					targetFile.delete();
-				}
-				FileUtils.copyInputStreamToFile(inputStream, targetFile);
-			} else {
-				fileGood = false;
-				System.out.println(
-						"This zip file doesn't look like it came directly from Alfresco. Try and unzip the file yourself first");
-				if (targetFile.exists()) {
-					targetFile.delete();
-				}
-				resetAll();
-				break;
-			}
-		}
-		} catch (NullPointerException e){
-			// don't worry about it
-		}
 
 		if (fileGood && targetFile != null && targetFile.isFile()) {
 			resetAll();
@@ -695,6 +670,47 @@ public class JmxMainController implements Initializable {
 			localParse(filePath);
 		}
 
+	}
+
+	/**
+	 * Helper method used to extract JMX txt file from JMX dump generated zip file
+	 * 
+	 * @param zipfile The zip file to be extracted. This should referencing a java.util.zip.ZipFile object.
+	 * @param targetFile The destination file. This should reference a java.io.File object.
+	 * @return True if the file was extracted, False otherwise.
+	 * @throws IOException
+	 */
+	private Boolean extractZipFile(ZipFile zipfile, File targetFile) throws IOException {
+
+		ZipEntry zipentry;
+		int fileNumber = 0;
+		// TODO could refactor this for loop and handle non alfresco zip differently
+		for (Enumeration<? extends ZipEntry> e = zipfile.entries(); e.hasMoreElements(); fileNumber++) {
+			zipentry = e.nextElement();
+
+			if (!zipentry.isDirectory()) {
+				InputStream inputStream = zipfile.getInputStream(zipentry);
+
+				// if there is a file already on the FS, delete it.
+				if (targetFile.exists()) {
+					targetFile.delete();
+				}
+				FileUtils.copyInputStreamToFile(inputStream, targetFile);
+			} else {
+				System.out.println(
+						"This zip file doesn't look like it came directly from Alfresco. Try and unzip the file yourself first");
+				if (targetFile.exists()) {
+					targetFile.delete();
+				}
+				resetAll();
+				return false;
+			}
+
+		return true;
+		}
+
+		// no file found in zip
+		return false;
 	}
 
 	@FXML
