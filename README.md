@@ -1,10 +1,13 @@
 # jmxdump-analyzer
 The JMXDump Analyser Utility is a small, internal-only, self-contained JavaFX application which allows you to open an Alfresco 'JMX dump' file and will split the contents in manageable tabs. Highlighting the important stuff first and then breaking down the settings into the relevant topics, the utility makes JMX dumps much easier to read!
 
-author @github/astrachan
+## Author 
+[astrachan](https://github.com/astrachan)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## Current version
-2.1.3
+2.1.4
 
 **Alfresco internal**
 
@@ -18,9 +21,10 @@ Please logon to our [Nexus](https://nexus.alfresco.com) before clicking on any o
 The docs above are built as part of the 'site' project, please follow the 'site' instructions below.
 
 ## Features
+* NEW Allow you to drag and drop JMXDump zip files directly into the application
 * Allows you to load in a JMXDump file from any version of Alfresco (including version 5.2 +)
-* NEW Allows you to drag and drop a JMXDump text file directly into the application
-* NEW Allows you to load in an Alfresco-generated JMXDump zip file
+* Allows you to drag and drop a JMXDump text file directly into the application
+* Allows you to load in an Alfresco-generated JMXDump zip file
 * Displays at-a-glance important information (Basic tab)
 * Breaks down the settings into relevant sections (tabs) in fixed-width font for easier reading and copying/pasting
 * Separates Global Properties from JMX-persisted settings (Global Properties are prepended with ** in the tabs)

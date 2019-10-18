@@ -104,12 +104,14 @@ import javafx.scene.text.Font;
  *          
  *          2.1.3 -- astrachan, XP-66 | fixed rubbish number of document in index. This time we isolate the indexing subsystem and count accordingly. Before we were also adding the total of docs in the SOLR searcher objects...
  *          
+ *          2.1.4 -- sirReeall
+ * 			Added the ability to drag and drop zip files just like they are txt files
  * 
  */
 
 public class JmxMainController implements Initializable {
 
-	public static String version = "2.1.3";
+	public static String version = "2.1.4";
 	public static String filePath = null;
 	public static File file;
 	public static File openedZipfile;

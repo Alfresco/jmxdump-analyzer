@@ -4,7 +4,9 @@
     <author email="alex.strachan@alfresco.com">Alex Strachan</author>
   </properties>
   <body>
-  
+    <release version="2.1.4" date="2019-10-18" description="Added Drag and dropping of zip file">
+      <action dev="sirReeall" type="update">Users can now drag and drop jmx zip files on to the GUI, just like extract txt</action>
+      </release>
   <release version="2.1.3" date="2017-07-21" description="XP-66">
     <action dev="astrachan" type="update">Fix rubbish calculation of approximate docs in the index. Now using the isolation of the index subsystem to determine what to look for...</action>
     </release>
