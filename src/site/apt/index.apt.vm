@@ -53,9 +53,11 @@ Features
 
 Version Info
 
-	<<Latest version is 2.1.3>> -- changes {{{https://artifacts.alfresco.com/nexus/content/repositories/alfresco-internal-docs/jmxdump-analyzer-fx/latest/changes-report.html}here}}
+	<<Latest version is 2.1.4>> -- changes {{{https://artifacts.alfresco.com/nexus/content/repositories/alfresco-internal-docs/jmxdump-analyzer-fx/latest/changes-report.html}here}}
 	
-	<<2.1.1 - 2.1.3>>
+	<<2.1.1 - 2.1.4>>
+
+		* Zip file drag and drop implemented
 		
 		* JVM uptime & uptime displayed as well as additional Java-related information
 		
@@ -107,4 +109,4 @@ Version Info
 
 Author (who to contact)
 
-	email me: {{{mailto://alex.strachan@alfresco.com}Alex Strachan}}
+	email me: {{{mailto://alex.strachan@alfresco.com}Alex Strachan}} or {{{mailto://sandeep.reehall@alfresco.com}Sandeep Reehall}}
