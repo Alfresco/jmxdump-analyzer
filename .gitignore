@@ -1,0 +1,12 @@
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+*.iml
+.settings
+.vscode
+.classpath
+.project
+*.txt
