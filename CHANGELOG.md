@@ -1,17 +1,12 @@
 # Change log
 
-## [Unreleased]
-
-### Changed
-- Created CHANGELOG.md as a replacement for Maven changes plugin [@sirReeall](https://github.com/sirReeall)
-### Removed
-
 ## [2.1.4] (2019-10-18)
 
 ### Added
 
 - Added Drag and dropping of zip file [@sirReeall](https://github.com/sirReeall)
     Users can now drag and drop jmx zip files on to the GUI, just like extracted txt files
+- Created CHANGELOG.md as a replacement for Maven changes plugin [@sirReeall](https://github.com/sirReeall)
 
 ## 2.1.3 (2017-07-21)
 
