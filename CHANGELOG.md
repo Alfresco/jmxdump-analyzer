@@ -6,8 +6,6 @@
 - Created CHANGELOG.md as a replacement for Maven changes plugin [@sirReeall](https://github.com/sirReeall)
 ### Removed
 
-
-
 ## [2.1.4] (2019-10-18)
 
 ### Added
