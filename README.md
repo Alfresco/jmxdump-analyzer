@@ -13,7 +13,7 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 Please logon to our [Nexus](https://nexus.alfresco.com) before clicking on any of these links:
 * Full documentation is [here](https://nexus.alfresco.com/nexus/content/repositories/alfresco-internal-docs/jmxdump-analyzer-fx/latest/index.html)
-* Full change log report is [here](https://nexus.alfresco.com/nexus/content/repositories/alfresco-internal-docs/jmxdump-analyzer-fx/latest/changes-report.html)
+* Full change log report is [here](CHANGELOG.md)
 * Latest SNAPSHOT versions are [here](https://artifacts.alfresco.com/nexus/content/repositories/alfresco-support-snapshots/org/alfresco/support/jmxdump-analyzer-fx/)
 
 **External**
