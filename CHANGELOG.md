@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 # Change log
+=======
+# jmxdump-analyzer Change log
+---
+>>>>>>> 937e2442725e4209488a40548bd0bc264acc5e27
 
 ## [Unreleased]
 
@@ -7,32 +12,52 @@
 ### Removed
 
 
+<<<<<<< HEAD
 ## [2.1.4] (2019-10-18)
+=======
+## [2.1.4] - 2019-10-18 - Latest
+>>>>>>> 937e2442725e4209488a40548bd0bc264acc5e27
 
 ### Added
 
 - Added Drag and dropping of zip file [@sirReeall](https://github.com/sirReeall)
     Users can now drag and drop jmx zip files on to the GUI, just like extracted txt files
 
+<<<<<<< HEAD
 ## 2.1.3 (2017-07-21)
+=======
+## 2.1.3 - 2017-07-21
+>>>>>>> 937e2442725e4209488a40548bd0bc264acc5e27
 
 ### Fixed
 
 - Fix rubbish calculation of approximate docs in the index. Now using the isolation of the index subsystem to determine what to look for... [@astrachan](https://github.com/astrachan)
 
+<<<<<<< HEAD
 ## 2.1.2 (2017-03-15)
+=======
+## 2.1.2 - 2017-03-15
+>>>>>>> 937e2442725e4209488a40548bd0bc264acc5e27
 
 ### Changed
 
 - Cleaned up UI [@astrachan](https://github.com/astrachan)
 
+<<<<<<< HEAD
 ## 2.1.1 (2017-02-20)
+=======
+## 2.1.1 - 2017-02-20
+>>>>>>> 937e2442725e4209488a40548bd0bc264acc5e27
 
 ### Added
 
 - Extract start-time and up-time from JVM runtime variables, then calculate them into human readable form (Basics tab) [@astrachan](https://github.com/astrachan)
 
+<<<<<<< HEAD
 ## 2.1.0 (2017-02-17)
+=======
+## 2.1.0 - 2017-02-17
+>>>>>>> 937e2442725e4209488a40548bd0bc264acc5e27
 
 ### Added
 
@@ -46,7 +71,11 @@
 - Made the index information specific to the current index.subsystem, instead of listing EVERYTHING that pattern matches [@astrachan](https://github.com/astrachan)
 - Tidied amps, populated cron properly [@astrachan](https://github.com/astrachan)
 
+<<<<<<< HEAD
 ## 2.0.4 - 2.0.0 (2016-03-23 - 2016-01-28)
+=======
+## 2.0.4 - 2.0.0 - 2016-03-23 - 2016-01-28
+>>>>>>> 937e2442725e4209488a40548bd0bc264acc5e27
 
 ### Added
 
@@ -56,7 +85,11 @@
 - Implemented feature for pressing ENTER for searching [@astrachan](https://github.com/astrachan)
 - Updated for 5.1, introduced DnD for dump files and opening ZIP files [@astrachan](https://github.com/astrachan)
 
+<<<<<<< HEAD
 ## 1.1.0 - 1.0.5 (2015-03-04 - 2015-02-25)
+=======
+## 1.1.0 - 1.0.5 - 2015-03-04 - 2015-02-25
+>>>>>>> 937e2442725e4209488a40548bd0bc264acc5e27
 
 ### Added
 
