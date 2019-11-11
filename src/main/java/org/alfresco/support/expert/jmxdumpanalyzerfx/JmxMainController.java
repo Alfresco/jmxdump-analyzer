@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.SortedSet;
@@ -624,7 +625,7 @@ public class JmxMainController implements Initializable {
 	// handler for menu item -> Open ZIP file event
 	private void handleFileOpenZipAction(ActionEvent event) throws IOException {
 		Boolean fileGood = true;
-		File targetFile = new File("unzippedJMXDumpfile.txt");
+		File targetFile = new File("unzippedJMXDumpfile"+getRandomNumber()+".txt");
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("ZIP files (*.zip)", "*.zip");
 		fileChooser.getExtensionFilters().add(extFilter);
@@ -765,7 +766,7 @@ public class JmxMainController implements Initializable {
 
 						try {
 							if (file.getName().toLowerCase().endsWith(".zip")) {
-								File unzippedFile = new File("unzippedJMXDumpfile.txt");
+								File unzippedFile = new File("unzippedJMXDumpfile"+getRandomNumber()+".txt");
 								if (extractZipFile(new ZipFile(file), unzippedFile)){
 									localParse(unzippedFile.getCanonicalPath());
 								}
@@ -1863,4 +1864,19 @@ public class JmxMainController implements Initializable {
 		return bd.doubleValue();
 	}
 
+
+	/**
+	 * random number generator. Hard coded bound between 1 and 100.
+	 * 
+	 * @return int which is randomly generated between 1 and 100.
+	 */
+	private int getRandomNumber() {
+	
+		int min = 1;
+		int max = 100;
+
+		Random r = new Random();
+		return r.ints(min, (max + 1)).findFirst().getAsInt();
+
+	}
 }
