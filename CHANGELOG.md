@@ -1,5 +1,12 @@
 # Change log
 
+## [unreleased]
+
+### Fixed
+
+- User can now run multiple jmxdump-analyzer windows and open multiple zip files.
+    Previously the last opened zip file would appear in both jmxdump-analyzer windows.
+
 ## [2.1.4] (2019-10-18)
 
 ### Added
@@ -66,7 +73,7 @@
 - Fixed bug in searching JVM tab information [@astrachan](https://github.com/astrachan)
 - Tidied up UI slightly [@astrachan](https://github.com/astrachan)
 
-[unreleased]: https://github.com/Alfresco/jmxdump-analyzer/tree/development
+[unreleased]: https://github.com/Alfresco/jmxdump-analyzer/tree/2.1.5
 [2.1.4]: https://github.com/Alfresco/jmxdump-analyzer
 
 # Acknowledgements

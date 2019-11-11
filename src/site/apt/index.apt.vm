@@ -53,9 +53,11 @@ Features
 
 Version Info
 
-	<<Latest version is 2.1.4>> -- changes {{{https://artifacts.alfresco.com/nexus/content/repositories/alfresco-internal-docs/jmxdump-analyzer-fx/latest/changes-report.html}here}}
+	<<Latest version is 2.1.5>> -- changes {{{https://artifacts.alfresco.com/nexus/content/repositories/alfresco-internal-docs/jmxdump-analyzer-fx/latest/changes-report.html}here}}
 	
-	<<2.1.1 - 2.1.4>>
+	<<2.1.1 - 2.1.5>>
+
+		* Multiple zip files can be opened 
 
 		* Zip file drag and drop implemented
 		

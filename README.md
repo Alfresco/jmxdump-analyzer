@@ -7,7 +7,7 @@ The JMXDump Analyser Utility is a small, internal-only, self-contained JavaFX ap
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## Current version
-2.1.4
+2.1.5
 
 **Alfresco internal**
 
@@ -21,7 +21,8 @@ Please logon to our [Nexus](https://nexus.alfresco.com) before clicking on any o
 The docs above are built as part of the 'site' project, please follow the 'site' instructions below.
 
 ## Features
-* NEW Allow you to drag and drop JMXDump zip files directly into the application
+* NEW you can run multiple JMXdump-analyzer's and open multiple zip files
+* Allow you to drag and drop JMXDump zip files directly into the application
 * Allows you to load in a JMXDump file from any version of Alfresco (including version 5.2 +)
 * Allows you to drag and drop a JMXDump text file directly into the application
 * Allows you to load in an Alfresco-generated JMXDump zip file
@@ -57,4 +58,6 @@ Browse to ~/target/site/index.html
 
 **Running the application**
 `java -jar target\jmxdump-analyzer-fx-x.x.x-jar-with-dependencies.jar`
+
+The jar is also executeable, and will open with a double click :)
 

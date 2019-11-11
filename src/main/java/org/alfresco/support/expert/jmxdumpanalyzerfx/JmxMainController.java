@@ -108,11 +108,14 @@ import javafx.scene.text.Font;
  *          2.1.4 -- sirReeall
  * 			Added the ability to drag and drop zip files just like they are txt files
  * 
+ *          2.1.5 -- sirReeall
+ * 			Users can now open multiple jmxdump zip files 
+ * 
  */
 
 public class JmxMainController implements Initializable {
 
-	public static String version = "2.1.4";
+	public static String version = "2.1.5";
 	public static String filePath = null;
 	public static File file;
 	public static File openedZipfile;

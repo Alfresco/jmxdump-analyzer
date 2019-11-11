@@ -13,7 +13,7 @@
 <AnchorPane id="AnchorPane" maxHeight="284.0" maxWidth="390.0" minHeight="284.0" minWidth="390.0" prefHeight="284.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.alfresco.support.expert.jmxdumpanalyzerfx.JmxAboutController">
    <children>
       <Label layoutX="111.0" layoutY="14.0" prefHeight="35.0" prefWidth="154.0" text="JMXDump-Analyzer-FX" AnchorPane.topAnchor="14.0" />
-      <Label layoutX="111.0" layoutY="75.0" text="Author:  Alex Strachan/ Sandeep Reehall" AnchorPane.topAnchor="75.0" />
+      <Label layoutX="111.0" layoutY="75.0" text="Author:  Alex Strachan | Sandeep Reehall" AnchorPane.topAnchor="75.0" />
       <Label layoutX="111.0" layoutY="49.0" text="Version:" AnchorPane.topAnchor="49.0" />
       <Label fx:id="lblVersion" layoutX="169.0" layoutY="49.0" prefHeight="17.0" prefWidth="102.0" AnchorPane.topAnchor="49.0" />
       <ImageView fitHeight="73.0" fitWidth="200.0" layoutX="78.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="103.0">
