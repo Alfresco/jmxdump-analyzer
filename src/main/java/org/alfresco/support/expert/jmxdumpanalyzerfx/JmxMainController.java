@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.HashSet;
+import java.util.Properties;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -115,7 +116,15 @@ import javafx.scene.text.Font;
 
 public class JmxMainController implements Initializable {
 
-	public static String version = "2.1.5";
+	private static Properties jmxdump_build_properties = new Properties();
+	static {
+		try {
+			jmxdump_build_properties.load(JmxMainController.class.getResourceAsStream("/jmxdump-build.properties"));			
+		} catch (Exception e) {
+			System.out.println("failed to load jmxdump-build.properties file");
+		}
+	}
+	public static String version = jmxdump_build_properties.getProperty("version");
 	public static String filePath = null;
 	public static File file;
 	public static File openedZipfile;
