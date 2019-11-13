@@ -125,6 +125,7 @@ public class JmxMainController implements Initializable {
 		}
 	}
 	public static String version = jmxdump_build_properties.getProperty("version");
+	public static String githubURL = jmxdump_build_properties.getProperty("githubURL");
 	public static String filePath = null;
 	public static File file;
 	public static File openedZipfile;
