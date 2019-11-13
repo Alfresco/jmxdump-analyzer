@@ -6,7 +6,11 @@
 
 - User can now run multiple jmxdump-analyzer windows and open multiple zip files.
     Previously the last opened zip file would appear in both jmxdump-analyzer windows.
+
+### Added
+
 - pom.xml configuarations can now be exposed to the application at build time
+- Tidied up About dialog box and added clickable link to Github project
 
 ## [2.1.4] (2019-10-18)
 
