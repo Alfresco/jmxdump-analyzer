@@ -59,7 +59,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
-
+import javafx.application.HostServices;
 /**
  *
  * @author astrachan
@@ -111,11 +111,13 @@ import javafx.scene.text.Font;
  * 
  *          2.1.5 -- sirReeall
  * 			Users can now open multiple jmxdump zip files 
+ * 			About dialog box tidy and added hyperlink to github project
  * 
  */
 
 public class JmxMainController implements Initializable {
 
+	private HostServices hostServices ;
 	private static Properties jmxdump_build_properties = new Properties();
 	static {
 		try {
@@ -260,6 +262,14 @@ public class JmxMainController implements Initializable {
 	public CheckBox chkBox;
 	@FXML
 	public AnchorPane mainAnchorPane;
+	
+	public HostServices getHostServices() {
+        return hostServices ;
+	}
+
+	public void setHostServices(HostServices hostServices) {
+        this.hostServices = hostServices ;
+	}
 	
 	@FXML
 	private void handleIncreaseFont(ActionEvent event) throws IOException {
@@ -817,9 +827,11 @@ public class JmxMainController implements Initializable {
 	@FXML
 	// handler for menu Help -> About
 	private void handleAboutAction(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("JmxAbout.fxml"));
-		Stage stage = new Stage();
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("JmxAbout.fxml"));
+        Parent root = loader.load();
+        JmxAboutController jmxAboutController = loader.getController();
+        jmxAboutController.setHostServices(hostServices);
+        Stage stage = new Stage();
 		stage.setScene(new Scene(root));
 		stage.setTitle("jmxdump-analyzer-fx | about");
 		stage.initModality(Modality.APPLICATION_MODAL);

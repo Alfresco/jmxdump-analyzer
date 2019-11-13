@@ -21,10 +21,16 @@ public class JMXFX extends Application {
     
     @Override
     public void start(final Stage mainStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("JmxMain.fxml"));
-        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("JmxMain.fxml"));
+
+        Parent root = loader.load();
+
+        JmxMainController controller = loader.getController();
+
         Scene scene = new Scene(root);
-        
+
+        controller.setHostServices(getHostServices());
+
         setUserAgentStylesheet(STYLESHEET_CASPIAN);
         scene.getStylesheets().add(this.getClass() .getResource("/stylesheets/textAreas.css").toExternalForm());
         mainStage.setTitle("JMX Dump Analyzer (jmxdump-analyzer-fx) - " + JmxMainController.version);

@@ -8,7 +8,11 @@ package org.alfresco.support.expert.jmxdumpanalyzerfx;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.io.IOException;
+import javafx.event.ActionEvent;
 
+
+import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -27,6 +31,7 @@ public class JmxAboutController implements Initializable {
     @FXML private Label lblVersion;
     @FXML private TextArea txtAbout;
     @FXML private Hyperlink txtGithubURL;
+    private HostServices hostServices ;
 
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -37,6 +42,17 @@ public class JmxAboutController implements Initializable {
         txtGithubURL.setText(JmxMainController.githubURL);
         txtGithubURL.setBorder(Border.EMPTY);
         txtGithubURL.setPadding(new Insets(4, 0, 4, 0));
+        // handle clicking on hyperlink by opening in browser
+        txtGithubURL.setOnAction(t -> {
+            getHostServices().showDocument(txtGithubURL.getText());
+        });
     }
-       
+
+	public void setHostServices(HostServices hostServices) {
+        this.hostServices = hostServices ;
+	}
+    
+    public HostServices getHostServices() {
+        return hostServices ;
+    }
 }
