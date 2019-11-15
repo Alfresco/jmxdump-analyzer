@@ -220,6 +220,7 @@ public class JmxSOLRController implements Initializable {
 		    }			    
  
 		   }
+		br.close();
 }
     
 
