@@ -13,12 +13,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Deque;
 import java.util.Enumeration;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -621,7 +620,18 @@ public class JmxMainController implements Initializable {
 
 	void cleanup() {
 		for (File file : targetFileNameList){
-			file.deleteOnExit();
+			try{
+				System.out.println("deleting " + file.getCanonicalPath());
+			}
+			catch (Exception e){
+				System.out.println("something is wrong!");
+			}
+
+			try {
+				Files.delete(file.toPath());
+			} catch (Exception e) {
+				System.out.print(e);
+			}
 		}
 	}
 

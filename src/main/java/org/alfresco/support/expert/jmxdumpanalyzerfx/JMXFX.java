@@ -47,8 +47,17 @@ public class JMXFX extends Application {
         mainStage.setScene(scene);
         mainStage.show();
        }
-
     
+    /**
+     * Clean up on exit
+     */
+    @Override
+    public void stop() throws Exception{
+        System.out.println("Started Stop method");
+        controller.cleanup();
+        System.out.println("Finished Stop method");
+    }
+
     /**
      * @param args the command line arguments
      */
