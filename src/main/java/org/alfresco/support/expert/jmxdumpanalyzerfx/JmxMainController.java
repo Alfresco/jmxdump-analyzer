@@ -13,8 +13,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
 import java.util.Enumeration;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -113,6 +117,8 @@ import javafx.application.HostServices;
 public class JmxMainController implements Initializable {
 
 	private HostServices hostServices ;
+
+	// used to gain access to pom.xml properties
 	private static Properties jmxdump_build_properties = new Properties();
 	static {
 		try {
@@ -123,9 +129,11 @@ public class JmxMainController implements Initializable {
 	}
 	public static String version = jmxdump_build_properties.getProperty("version");
 	public static String githubURL = jmxdump_build_properties.getProperty("githubURL");
+		
 	public static String filePath = null;
 	public static File file;
 	public static File openedZipfile;
+	private Deque<File> targetFileNameList = new ArrayDeque<>();
 
 	private static Set<String> basics = new HashSet<String>();
 	private static Set<String> usergroups = new HashSet<String>();
@@ -602,7 +610,19 @@ public class JmxMainController implements Initializable {
 	@FXML
 	// handler for menu item -> Close event
 	private void handleClose(ActionEvent event) {
+		cleanup();
 		System.exit(0);
+	}
+
+
+	/**
+	 * Cleans up any files or resources used by the instanace
+	 */
+
+	void cleanup() {
+		for (File file : targetFileNameList){
+			file.deleteOnExit();
+		}
 	}
 
 	@FXML
@@ -644,6 +664,8 @@ public class JmxMainController implements Initializable {
 	private void handleFileOpenZipAction(ActionEvent event) throws IOException {
 		Boolean fileGood = true;
 		File targetFile = new File("unzippedJMXDumpfile"+getRandomNumber()+".txt");
+		// keeps track of unzipped file 
+		targetFileNameList.add(targetFile);
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("ZIP files (*.zip)", "*.zip");
 		fileChooser.getExtensionFilters().add(extFilter);
@@ -785,6 +807,10 @@ public class JmxMainController implements Initializable {
 						try {
 							if (file.getName().toLowerCase().endsWith(".zip")) {
 								File unzippedFile = new File("unzippedJMXDumpfile"+getRandomNumber()+".txt");
+
+								//keeps track of unzipped file names
+								targetFileNameList.add(unzippedFile);
+
 								if (extractZipFile(new ZipFile(file), unzippedFile)){
 									localParse(unzippedFile.getCanonicalPath());
 								}
