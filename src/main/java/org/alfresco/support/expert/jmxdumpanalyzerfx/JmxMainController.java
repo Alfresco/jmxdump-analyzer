@@ -1005,11 +1005,9 @@ public class JmxMainController implements Initializable {
 	private void localParse(String filePath) throws IOException {
 
 		BufferedReader br = new BufferedReader(new FileReader(filePath));
-		BufferedReader br2 = new BufferedReader(new FileReader(filePath));
 		BufferedReader br3 = new BufferedReader(new FileReader(filePath));
 		BufferedReader br4 = new BufferedReader(new FileReader(filePath));
 		BufferedReader br5 = new BufferedReader(new FileReader(filePath));
-		BufferedReader br6 = new BufferedReader(new FileReader(filePath));
 		BufferedReader br7 = new BufferedReader(new FileReader(filePath));
 
 		int modCount = 0;
