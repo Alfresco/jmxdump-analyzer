@@ -18,21 +18,28 @@ import javafx.scene.image.Image;
  */
 public class JMXFX extends Application {
     
+    private FXMLLoader loader;
+
+    private Parent root;
+
+    private JmxMainController controller;
+
+    private Scene scene;
     
+    public void init() throws Exception {
+        loader = new FXMLLoader(getClass().getResource("JmxMain.fxml"));
+        root = loader.load();
+        controller = loader.getController();
+        controller.setHostServices(getHostServices());
+        
+        setUserAgentStylesheet(STYLESHEET_CASPIAN);
+
+        scene = new Scene(root);
+        scene.getStylesheets().add(this.getClass() .getResource("/stylesheets/textAreas.css").toExternalForm());
+    }
+
     @Override
     public void start(final Stage mainStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("JmxMain.fxml"));
-
-        Parent root = loader.load();
-
-        JmxMainController controller = loader.getController();
-
-        Scene scene = new Scene(root);
-
-        controller.setHostServices(getHostServices());
-
-        setUserAgentStylesheet(STYLESHEET_CASPIAN);
-        scene.getStylesheets().add(this.getClass() .getResource("/stylesheets/textAreas.css").toExternalForm());
         mainStage.setTitle("JMX Dump Analyzer (jmxdump-analyzer-fx) - " + JmxMainController.version);
         mainStage.setMinWidth(800.00);
         mainStage.setMinHeight(400.00);
