@@ -8,8 +8,6 @@ package org.alfresco.support.expert.jmxdumpanalyzerfx;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Iterator;

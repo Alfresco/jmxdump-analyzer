@@ -8,8 +8,6 @@ package org.alfresco.support.expert.jmxdumpanalyzerfx;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.io.IOException;
-import javafx.event.ActionEvent;
 
 
 import javafx.application.HostServices;

@@ -8,12 +8,9 @@ package org.alfresco.support.expert.jmxdumpanalyzerfx;
 import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.util.Enumeration;
@@ -47,7 +44,6 @@ import javafx.stage.Stage;
 import java.math.RoundingMode;
 import java.util.Scanner;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -58,7 +54,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Font;
 import javafx.application.HostServices;
 /**
  *
