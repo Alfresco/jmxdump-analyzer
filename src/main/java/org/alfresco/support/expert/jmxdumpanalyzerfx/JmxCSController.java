@@ -75,7 +75,7 @@ public class JmxCSController implements Initializable {
 		    	populateCalcInfo("");
 		    }
 		   }
-	
+		br.close();
 } 
     
     
