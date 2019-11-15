@@ -71,6 +71,8 @@ public class JmxCacheStatsController implements Initializable {
 		    }
 		   }
 		populateCalcInfo("Total cache count: " + count);
+
+		br.close();
 }
     
 
