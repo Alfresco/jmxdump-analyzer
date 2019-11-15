@@ -5,8 +5,6 @@
  */
 package org.alfresco.support.expert.jmxdumpanalyzerfx;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashSet;
@@ -47,9 +45,6 @@ public class JmxAppliedToServerController implements Initializable {
     }
 
 	private void doWork() throws IOException{
-		String line; // applied version info
-	
-		BufferedReader br = new BufferedReader(new FileReader(jmxFilePath)); 
 
 		populateVersionInfo("APPLIED VERSIONS (upgrade path)");
 		populateVersionInfo("");
