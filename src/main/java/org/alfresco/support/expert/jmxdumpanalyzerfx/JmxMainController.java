@@ -620,13 +620,6 @@ public class JmxMainController implements Initializable {
 
 	void cleanup() {
 		for (File file : targetFileNameList){
-			try{
-				System.out.println("deleting " + file.getCanonicalPath());
-			}
-			catch (Exception e){
-				System.out.println("something is wrong!");
-			}
-
 			// there is a known concurrency issue with clean up
 			// https://github.com/Alfresco/jmxdump-analyzer/issues/11
 			try {

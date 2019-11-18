@@ -53,9 +53,7 @@ public class JMXFX extends Application {
      */
     @Override
     public void stop() throws Exception{
-        System.out.println("Started Stop method");
         controller.cleanup();
-        System.out.println("Finished Stop method");
     }
 
     /**
