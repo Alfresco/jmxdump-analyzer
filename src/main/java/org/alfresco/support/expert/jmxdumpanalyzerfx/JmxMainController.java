@@ -627,6 +627,8 @@ public class JmxMainController implements Initializable {
 				System.out.println("something is wrong!");
 			}
 
+			// there is a known concurrency issue with clean up
+			// https://github.com/Alfresco/jmxdump-analyzer/issues/11
 			try {
 				Files.delete(file.toPath());
 			} catch (Exception e) {
