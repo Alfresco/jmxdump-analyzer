@@ -214,7 +214,11 @@ public class JmxRecController implements Initializable {
 	    	}
 	    	line12 = br12.readLine();
 	    	
-	    	populateCalcInfo("Ensure that the above database server/driver versions are supported.\nSee http://www.alfresco.com/services/subscription/supported-platforms");
+			populateCalcInfo("Ensure that the above database server/driver versions are supported.\nSee http://www.alfresco.com/services/subscription/supported-platforms");
+	
+	br10.close();
+	br11.close();
+	br12.close();
 }
 
  private void systemRecs() throws IOException{

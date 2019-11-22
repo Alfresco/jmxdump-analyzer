@@ -8,16 +8,18 @@ package org.alfresco.support.expert.jmxdumpanalyzerfx;
 import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.nio.file.Files;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Enumeration;
 import java.util.HashSet;
+import java.util.Properties;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.SortedSet;
@@ -45,7 +47,6 @@ import javafx.stage.Stage;
 import java.math.RoundingMode;
 import java.util.Scanner;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -56,8 +57,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Font;
-
+import javafx.application.HostServices;
 /**
  *
  * @author astrachan
@@ -107,14 +107,34 @@ import javafx.scene.text.Font;
  *          2.1.4 -- sirReeall
  * 			Added the ability to drag and drop zip files just like they are txt files
  * 
+ *          2.1.5 -- sirReeall
+ * 			Users can now open multiple jmxdump zip files 
+ * 			About dialog box tidy and added hyperlink to github project
+ * 			pom.xml properties exposed to application
+ * 			Splash text added when jmx dump opens
+ * 
  */
 
 public class JmxMainController implements Initializable {
 
-	public static String version = "2.1.4";
+	private HostServices hostServices ;
+
+	// used to gain access to pom.xml properties
+	private static Properties jmxdump_build_properties = new Properties();
+	static {
+		try {
+			jmxdump_build_properties.load(JmxMainController.class.getResourceAsStream("/jmxdump-build.properties"));			
+		} catch (Exception e) {
+			System.out.println("failed to load jmxdump-build.properties file");
+		}
+	}
+	public static String version = jmxdump_build_properties.getProperty("version");
+	public static String githubURL = jmxdump_build_properties.getProperty("githubURL");
+		
 	public static String filePath = null;
 	public static File file;
 	public static File openedZipfile;
+	private Deque<File> targetFileNameList = new ArrayDeque<>();
 
 	private static Set<String> basics = new HashSet<String>();
 	private static Set<String> usergroups = new HashSet<String>();
@@ -246,6 +266,20 @@ public class JmxMainController implements Initializable {
 	public CheckBox chkBox;
 	@FXML
 	public AnchorPane mainAnchorPane;
+
+	private final String splashString = "Drag and Drop a JMX file to begin\n\n" + 
+										"Find me on GitHib: " + 
+										"\n\n" + githubURL + "\n\n" +
+										"Log issues, enhancements, and requests: " + 
+										"\n\n" + githubURL +"/issues";
+	
+	public HostServices getHostServices() {
+        return hostServices ;
+	}
+
+	public void setHostServices(HostServices hostServices) {
+        this.hostServices = hostServices ;
+	}
 	
 	@FXML
 	private void handleIncreaseFont(ActionEvent event) throws IOException {
@@ -583,7 +617,25 @@ public class JmxMainController implements Initializable {
 	@FXML
 	// handler for menu item -> Close event
 	private void handleClose(ActionEvent event) {
+		cleanup();
 		System.exit(0);
+	}
+
+
+	/**
+	 * Cleans up any files or resources used by the instanace
+	 */
+
+	void cleanup() {
+		for (File file : targetFileNameList){
+			// there is a known concurrency issue with clean up
+			// https://github.com/Alfresco/jmxdump-analyzer/issues/11
+			try {
+				Files.delete(file.toPath());
+			} catch (Exception e) {
+				System.out.print(e);
+			}
+		}
 	}
 
 	@FXML
@@ -624,7 +676,9 @@ public class JmxMainController implements Initializable {
 	// handler for menu item -> Open ZIP file event
 	private void handleFileOpenZipAction(ActionEvent event) throws IOException {
 		Boolean fileGood = true;
-		File targetFile = new File("unzippedJMXDumpfile.txt");
+		File targetFile = new File("unzippedJMXDumpfile"+getRandomNumber()+".txt");
+		// keeps track of unzipped file 
+		targetFileNameList.add(targetFile);
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("ZIP files (*.zip)", "*.zip");
 		fileChooser.getExtensionFilters().add(extFilter);
@@ -765,7 +819,11 @@ public class JmxMainController implements Initializable {
 
 						try {
 							if (file.getName().toLowerCase().endsWith(".zip")) {
-								File unzippedFile = new File("unzippedJMXDumpfile.txt");
+								File unzippedFile = new File("unzippedJMXDumpfile"+getRandomNumber()+".txt");
+
+								//keeps track of unzipped file names
+								targetFileNameList.add(unzippedFile);
+
 								if (extractZipFile(new ZipFile(file), unzippedFile)){
 									localParse(unzippedFile.getCanonicalPath());
 								}
@@ -803,9 +861,11 @@ public class JmxMainController implements Initializable {
 	@FXML
 	// handler for menu Help -> About
 	private void handleAboutAction(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("JmxAbout.fxml"));
-		Stage stage = new Stage();
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("JmxAbout.fxml"));
+        Parent root = loader.load();
+        JmxAboutController jmxAboutController = loader.getController();
+        jmxAboutController.setHostServices(hostServices);
+        Stage stage = new Stage();
 		stage.setScene(new Scene(root));
 		stage.setTitle("jmxdump-analyzer-fx | about");
 		stage.initModality(Modality.APPLICATION_MODAL);
@@ -948,11 +1008,9 @@ public class JmxMainController implements Initializable {
 	private void localParse(String filePath) throws IOException {
 
 		BufferedReader br = new BufferedReader(new FileReader(filePath));
-		BufferedReader br2 = new BufferedReader(new FileReader(filePath));
 		BufferedReader br3 = new BufferedReader(new FileReader(filePath));
 		BufferedReader br4 = new BufferedReader(new FileReader(filePath));
 		BufferedReader br5 = new BufferedReader(new FileReader(filePath));
-		BufferedReader br6 = new BufferedReader(new FileReader(filePath));
 		BufferedReader br7 = new BufferedReader(new FileReader(filePath));
 
 		int modCount = 0;
@@ -1832,7 +1890,9 @@ public class JmxMainController implements Initializable {
 	}
 
 	public void initialize(URL url, ResourceBundle rb) {
-		// TODO
+		// Splash Screen Text Github issue 
+		txtBasic.setStyle("-fx-text-alignment: left;");
+		txtBasic.setText(splashString);
 		menuReset.setDisable(true);
 		menuRec.setDisable(true);
 		menuVersion.setDisable(true);
@@ -1863,4 +1923,19 @@ public class JmxMainController implements Initializable {
 		return bd.doubleValue();
 	}
 
+
+	/**
+	 * random number generator. Hard coded bound between 1 and 100.
+	 * 
+	 * @return int which is randomly generated between 1 and 100.
+	 */
+	private int getRandomNumber() {
+	
+		int min = 1;
+		int max = 100;
+
+		Random r = new Random();
+		return r.ints(min, (max + 1)).findFirst().getAsInt();
+
+	}
 }

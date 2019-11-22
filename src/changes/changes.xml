@@ -4,9 +4,15 @@
     <author email="alex.strachan@alfresco.com">Alex Strachan</author>
   </properties>
   <body>
-    <release version="2.1.4" date="2019-10-18" description="Added Drag and dropping of zip file">
-      <action dev="sirReeall" type="update">Users can now drag and drop jmx zip files on to the GUI, just like extract txt</action>
-      </release>
+  <release version="2.1.5" date="2019-11-13" description="fixed opening multiple jmxdump zip files">
+    <action dev="sirReeall" type="fixed">Users can now open multiple jmxdump files that are zips</action>
+    <action dev="sirReeall" type="changed">pom.xml configuarations can now be exposed to the application at build time</action>
+    <action dev="sirReeall" type="changed">Tidied up About dialog box and added clickable link to Github project</action>
+    <action dev="sirReeall" type="added">Splash text on opening up applicaiton</action>
+  </release>
+  <release version="2.1.4" date="2019-10-18" description="Added Drag and dropping of zip file">
+    <action dev="sirReeall" type="update">Users can now drag and drop jmx zip files on to the GUI, just like extract txt</action>
+  </release>
   <release version="2.1.3" date="2017-07-21" description="XP-66">
     <action dev="astrachan" type="update">Fix rubbish calculation of approximate docs in the index. Now using the isolation of the index subsystem to determine what to look for...</action>
     </release>

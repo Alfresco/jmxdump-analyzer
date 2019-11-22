@@ -13,7 +13,6 @@ import java.math.RoundingMode;
 import java.net.URL;
 
 import java.util.ResourceBundle;
-import java.util.Set;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -76,7 +75,7 @@ public class JmxCSController implements Initializable {
 		    	populateCalcInfo("");
 		    }
 		   }
-	
+		br.close();
 } 
     
     

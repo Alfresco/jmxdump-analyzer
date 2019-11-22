@@ -172,6 +172,10 @@ private void doWork() throws IOException{
 		    }
 		   }
                 Set<String> osProps = null;
+	br.close();
+	br1.close();
+	br2.close();
+	br3.close();
 }
 
 

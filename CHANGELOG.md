@@ -1,5 +1,21 @@
 # Change log
 
+## [2.1.5] (2019-11-25)
+
+### Fixed
+
+- User can now run multiple jmxdump-analyzer windows, each with it's own opened zip file. [@sirReeall](https://github.com/sirReeall)
+    Previously the last opened zip file would appear in all opened jmxdump-analyzer windows. [@sirReeall](https://github.com/sirReeall)
+
+### Added
+
+- Splash text added when jmx dump opens. [@sirReeall](https://github.com/sirReeall)
+
+### Changed
+
+- Tidied up About dialog box and added clickable link to Github project. [@sirReeall](https://github.com/sirReeall)
+- pom.xml configurations can now be exposed to the application at build time. [@sirReeall](https://github.com/sirReeall)
+
 ## [2.1.4] (2019-10-18)
 
 ### Added
@@ -66,8 +82,9 @@
 - Fixed bug in searching JVM tab information [@astrachan](https://github.com/astrachan)
 - Tidied up UI slightly [@astrachan](https://github.com/astrachan)
 
-[unreleased]: https://github.com/Alfresco/jmxdump-analyzer/tree/development
-[2.1.4]: https://github.com/Alfresco/jmxdump-analyzer
+[unreleased]: https://github.com/Alfresco/jmxdump-analyzer/
+[2.1.5]: https://github.com/Alfresco/jmxdump-analyzer/tree/2.1.5
+[2.1.4]: https://github.com/Alfresco/jmxdump-analyzer/tree/2.1.4
 
 # Acknowledgements
 
