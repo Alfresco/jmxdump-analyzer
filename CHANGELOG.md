@@ -1,8 +1,5 @@
 # Change log
 
-## [unreleased]
-
-
 ## [2.1.5] (2019-11-25)
 
 ### Fixed

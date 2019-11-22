@@ -21,7 +21,7 @@ Please logon to our [Nexus](https://nexus.alfresco.com) before clicking on any o
 The docs above are built as part of the 'site' project, please follow the 'site' instructions below.
 
 ## Features
-* NEW you can run multiple JMXdump-analyzer's and open multiple zip files
+* **NEW** you can run multiple JMXdump-analyzer's and open multiple zip files
 * Allow you to drag and drop JMXDump zip files directly into the application
 * Allows you to load in a JMXDump file from any version of Alfresco (including version 5.2 +)
 * Allows you to drag and drop a JMXDump text file directly into the application
