@@ -8,6 +8,7 @@
     <action dev="sirReeall" type="fixed">Users can now open multiple jmxdump files that are zips</action>
     <action dev="sirReeall" type="changed">pom.xml configuarations can now be exposed to the application at build time</action>
     <action dev="sirReeall" type="changed">Tidied up About dialog box and added clickable link to Github project</action>
+    <action dev="sirReeall" type="added">Splash text on opening up applicaiton</action>
   </release>
   <release version="2.1.4" date="2019-10-18" description="Added Drag and dropping of zip file">
     <action dev="sirReeall" type="update">Users can now drag and drop jmx zip files on to the GUI, just like extract txt</action>

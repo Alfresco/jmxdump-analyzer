@@ -110,6 +110,7 @@ import javafx.application.HostServices;
  *          2.1.5 -- sirReeall
  * 			Users can now open multiple jmxdump zip files 
  * 			About dialog box tidy and added hyperlink to github project
+ * 			pom.xml properties exposed to application
  * 			Splash text added when jmx dump opens
  * 
  */
