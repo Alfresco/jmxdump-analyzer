@@ -110,6 +110,7 @@ import javafx.application.HostServices;
  *          2.1.5 -- sirReeall
  * 			Users can now open multiple jmxdump zip files 
  * 			About dialog box tidy and added hyperlink to github project
+ * 			Splash text added when jmx dump opens
  * 
  */
 
@@ -264,6 +265,12 @@ public class JmxMainController implements Initializable {
 	public CheckBox chkBox;
 	@FXML
 	public AnchorPane mainAnchorPane;
+
+	private final String splashString = "Drag and Drop a JMX file to begin\n\n" + 
+										"Find me on GitHib: " + 
+										"\n\n" + githubURL + "\n\n" +
+										"Log issues, enhancements, and requests: " + 
+										"\n\n" + githubURL +"/issues";
 	
 	public HostServices getHostServices() {
         return hostServices ;
@@ -1882,7 +1889,9 @@ public class JmxMainController implements Initializable {
 	}
 
 	public void initialize(URL url, ResourceBundle rb) {
-		// TODO
+		// Splash Screen Text Github issue 
+		txtBasic.setStyle("-fx-text-alignment: left;");
+		txtBasic.setText(splashString);
 		menuReset.setDisable(true);
 		menuRec.setDisable(true);
 		menuVersion.setDisable(true);
