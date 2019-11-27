@@ -1,5 +1,7 @@
 # Change log
 
+## [Unrelease]
+
 ## [2.1.5] (2019-11-25)
 
 ### Fixed
@@ -82,7 +84,7 @@
 - Fixed bug in searching JVM tab information [@astrachan](https://github.com/astrachan)
 - Tidied up UI slightly [@astrachan](https://github.com/astrachan)
 
-[unreleased]: https://github.com/Alfresco/jmxdump-analyzer/
+[unreleased]: https://github.com/Alfresco/jmxdump-analyzer/3.0.0
 [2.1.5]: https://github.com/Alfresco/jmxdump-analyzer/tree/2.1.5
 [2.1.4]: https://github.com/Alfresco/jmxdump-analyzer/tree/2.1.4
 

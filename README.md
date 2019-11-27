@@ -7,7 +7,7 @@ The JMXDump Analyser Utility is a small, internal-only, self-contained JavaFX ap
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## Current version
-2.1.5
+3.0.0
 
 **Alfresco internal**
 
