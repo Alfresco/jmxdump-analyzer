@@ -88,4 +88,12 @@ public class JMXDumpFile {
         }
         return results;
     }
+
+    int getAllObjectNamesSize() {
+        return allObjectNames.size();
+    }
+
+    int getAllLinesSize() {
+        return jmxFileAllLines.size();
+    }    
 }
