@@ -44,7 +44,7 @@ First you can clone this repository.
 
 **Pre-requisites**
 * Maven 3.3.9 or above
-* Java 8
+* Java 17
 
 **Building**
 `mvn clean install`
